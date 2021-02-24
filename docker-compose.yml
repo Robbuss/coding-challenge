@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  web:
+    build:
+      target: web
+      context: .
+    ports:
+      - 8123:80
+  frontend:
+    build: 
+      target: builder
+      context: .
+    ports:
+      - 8124:8080
+    volumes: 
+      - ./resources/frontend:/var/www/frontend
+    working_dir: /var/www/frontend
+    command: "/bin/sh -c 'npm install && npm run serve'"
+  api:
+    build:
+      target: phpapi
+      context: .
+    command: "/bin/sh -c 'composer install && php-fpm'"
+    volumes:
+      - .:/var/www/
