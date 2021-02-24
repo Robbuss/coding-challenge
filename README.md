@@ -33,7 +33,8 @@ Write a test to cover the examples in the Assignment
 Add a few buttons in the frontend to add columns and rows to each matrix 
 
 # Run: 
-docker-compose up -d 
+docker-compose up --build -d  
+note: It could take a while before everything is running, because npm run serve has to compile 
 
 # Troubleshooting: 
 - try running composer install
